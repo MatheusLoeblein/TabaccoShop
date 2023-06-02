@@ -54,14 +54,14 @@ class Product(models.Model):
 
         max_image_size = 800
 
-        if self.iimage:
+        if self.image:
             self.resize_image(self.image, max_image_size)
 
     def __str__(self):
         return self.name
 
 
-class Variacao(models.Model):
+class Variation(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, blank=True, null=True)
     price = models.FloatField()

@@ -3,12 +3,11 @@ import re
 from django.contrib.auth.models import User
 from django.db import models
 from django.forms import ValidationError
-
 from utils.cpf_validator import cpf_validator
 
 
 class Perfil(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Usuario')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Usuario')  # noqa: E501
     birth_date = models.DateField(verbose_name='Data de Nascimento')
     cpf = models.CharField(max_length=11, verbose_name='CPF')
     address = models.CharField(max_length=50, verbose_name='Endereço')
