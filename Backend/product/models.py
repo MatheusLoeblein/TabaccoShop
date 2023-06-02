@@ -9,7 +9,7 @@ from PIL import Image
 # Create your models here.
 
 
-class Produto(models.Model):
+class Product(models.Model):
     name = models.CharField(max_length=255)
     description_short = models.TextField(max_length=255)
     description_long = models.TextField()
@@ -62,7 +62,7 @@ class Produto(models.Model):
 
 
 class Variacao(models.Model):
-    product = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, blank=True, null=True)
     price = models.FloatField()
     price_promotional = models.FloatField(default=0)

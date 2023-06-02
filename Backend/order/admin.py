@@ -1,3 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import ItemOrder, Order
+
+
+class OrderAdmin(admin.ModelAdmin):
+    ...
+
+
+class ItemOrderAdmin(admin.ModelAdmin):
+    ...
+
+
+admin.site.register(Order, OrderAdmin)
+admin.site.register(ItemOrder, ItemOrderAdmin)
