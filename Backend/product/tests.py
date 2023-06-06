@@ -14,3 +14,16 @@ class ProductURLsTest(TestCase):
     def test_product_variant_api_url(self):
         url = reverse('product:variant', args=(1,))
         self.assertEqual(url, '/products/variant/1/')
+
+    def test_post_products_api_url_return(self):
+        response = self.client.post('/products/', data={
+            "name": "teste",
+            "description_short": "asdasds asdaa sdasas",
+            "description_long": "lorem"*10,
+            "image": "",
+            "slug": "pata-de-amendoin",
+            "price_marketing": 11.0,
+            "price_marketing_promotional": 9.0,
+            "type": "V"
+        },)
+        self.assertEqual(response.status_code, 201)

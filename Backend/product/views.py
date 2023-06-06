@@ -13,10 +13,13 @@ from .serializers import ProductSerializer, VariationSerializer
 class ProductListViewApi(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    http_method_names = ['get', 'options', 'head']
+    http_method_names = ['get', 'post', 'options', 'head']
 
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
+
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
 
 
 class ProductDetailViewApi(RetrieveAPIView):
