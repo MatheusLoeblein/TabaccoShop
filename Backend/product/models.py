@@ -1,5 +1,6 @@
 # Create your models here.
 import os
+import uuid
 
 from django.conf import settings
 from django.db import models
@@ -10,6 +11,7 @@ from PIL import Image
 
 
 class Product(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     description_short = models.TextField(max_length=255)
     description_long = models.TextField()
