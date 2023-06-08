@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import Product, Variation
 from .serializers import ProductSerializer, VariationSerializer
 
@@ -13,6 +13,7 @@ from .serializers import ProductSerializer, VariationSerializer
 class ProductListViewApi(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
     http_method_names = ['get', 'post', 'options', 'head']
 
     def list(self, request, *args, **kwargs):

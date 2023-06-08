@@ -8,14 +8,14 @@ class ProductURLsTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_product_detail_url_is_corret(self):
-        url = reverse('product:detail', args=(1,))
-        self.assertEqual(url, '/products/1/')
+        response = self.client.get('/products/1/')
+        self.assertEqual(response.status_code, 200)
 
     def test_product_variant_api_url(self):
         url = reverse('product:variant', args=(1,))
         self.assertEqual(url, '/products/variant/1/')
 
-    def test_post_products_api_url_return(self):
+    def test_unauthorized_post (self):
         response = self.client.post('/products/', data={
             "name": "teste",
             "description_short": "asdasds asdaa sdasas",
@@ -26,4 +26,12 @@ class ProductURLsTest(TestCase):
             "price_marketing_promotional": 9.0,
             "type": "V"
         },)
-        self.assertEqual(response.status_code, 201)
+
+        self.assertEqual(response.status_code, 403)
+
+    
+
+
+
+
+
