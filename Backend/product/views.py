@@ -1,9 +1,11 @@
+from django.core.exceptions import ValidationError
 from django.http import Http404
 from rest_framework import status
 from rest_framework.generics import RetrieveAPIView
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
 from .models import Product, Variation
 from .serializers import ProductSerializer, VariationSerializer
 
@@ -35,7 +37,10 @@ class ProductVariantListViewApi(ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.filter(product__id=self.kwargs.get('product'))
+        try:
+            qs = qs.filter(product__id=self.kwargs.get('id'))
+        except ValidationError as e:
+            print(e)
 
         if not qs.exists():
             raise Http404("Not found.")
