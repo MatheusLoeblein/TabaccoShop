@@ -1,10 +1,14 @@
 import P from 'prop-types';
 import * as Styled from './styles';
+import { Logo } from '../Logo';
+import {Search} from '../Search'
 
-export const Header = ({ children }) => {
+export const Header = () => {
     return (
         <Styled.Container>
-            <h1>{children}</h1>
+            <Logo name="TabaccoShop"/>
+            <Search/>
+            
         </Styled.Container>
     );
 };

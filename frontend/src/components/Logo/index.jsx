@@ -1,10 +1,10 @@
 import P from 'prop-types';
 import * as Styled from './styles';
 
-export const Logo = ({ children }) => {
+export const Logo = ({ name }) => {
     return (
         <Styled.Container>
-            <h1>{children}</h1>
+            <a href="">{name}</a>
         </Styled.Container>
     );
 };
